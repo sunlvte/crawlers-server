@@ -5,37 +5,58 @@ const fs = require('fs');
 const url = require('url');
 const request =require('request');
 const hcoinUrl = 'https://www.hcoin.com/#/trade/usdt/hcoin';
+const launchOptions = require('./config/launch')
+const spiders = require('./lib/spiders')
+spiders()
+// let browser;
+//
+//
+//  const getSingle = async (page, els) => {
+// 	 const div  = await page.$eval(els, e => e.innerHTML);
+// 	 return div;
+//  }
+//  const getAllList = async (page, els) => {
+// 	 const List = await page.$$eval(els, elements => {
+// 		 const ctn = elements.map(v => {
+// 			 return v.innerText;
+// 		 });
+// 		 return ctn;
+// 	 });
+// 	 return List;
+//  }
+// const gitChat = async () => {
+// // 创建浏览器
+// 	try {
+// 		browser = await puppeteer.launch(launchOptions)
+// 		const page = await browser.newPage();
+// 		await page.goto(hcoinUrl);
+// 		const sellOrderClass = '.orderlist_top_ .body-row .bd-item';
+// 		const buyOrderClass = '.order_list .bottom .bd-item';
+// 		const tickerElsClass = '.main .mid .left';
+//
+// 		await page.waitForSelector(sellOrderClass,{ timeout: 20000 })
+//
+// 		setInterval(async () => {
+// 			console.log(await  getAllList(page, buyOrderClass))
+// 			console.log(await  getAllList(page, sellOrderClass))
+// 		}, 10000)
+//
+//
+// 	} catch(e) {
+// 		browser.close();
+// 		console.log(e);
+// 	}
+//
+//
+//
+//
+// 	//orderlist_top_ body-row  bd-item   first/second/third
+// }
+//
+// gitChat();
 
 
-const puppeteer = require('puppeteer')
 
-const gitChat = async () => {
-// 创建浏览器
-	const browser = await puppeteer.launch({
-// 这个属性是控制是否有GUI界面的，我们刚开始学习，这里可以设置成false，让我们可以看着浏览器动
-		headless: false,
-		timeout: 15000,
-//  executablePath: '/Users/xiaobei/Downloads/chrome-mac/Chromium.app/Contents/MacOS/Chromium',
-// 这个属性里面有很多配置，常见的有下面几个，挂代理，或者在服务器上跑代码的时候需要（后面详细介绍）
-		args: [
-			// '--proxy-server=127.0.0.1:1087', // 这里可以挂代理
-			//  '--no-sandbox', '--disable-setuid-sandbox' // 这个配置是在服务器环境下才配的
-		]
-	})
-	const page = await browser.newPage();
-	await page.goto(hcoinUrl);
-	await page.waitForSelector('.main .mid .left',{ timeout: 10000 })
-	// console.log(await page.$('.main .mid .left'));
-	const div  = await page.$eval('.main .mid .left', e => e.innerHTML);
-	console.log(div);
-
-
-
-	//orderlist_top_ body-row  bd-item   first/second/third
-}
-
-
-setInterval(() => {gitChat()}, 60000)
 
 
 

@@ -4,7 +4,9 @@
   "description": "crawlers-hcoin-server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cross-env NODE_ENV=production node app.js",
+    "dev": "cross-env NODE_ENV=dev node app.js"
   },
   "author": "sunlvte",
   "license": "ISC",
@@ -12,6 +14,7 @@
     "async": "^2.6.1",
     "babel": "^6.23.0",
     "cheerio": "^1.0.0-rc.2",
+    "node-schedule": "^1.3.1",
     "puppeteer": "^1.11.0",
     "request": "^2.88.0",
     "superagent": "^4.0.0"
