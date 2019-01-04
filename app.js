@@ -12,7 +12,7 @@ const config = require('./config/start');
 const connectMongo = require('./models/connect')
 const childprocess = require('child_process')
 const log = require('./lib/log')
-const util = require('./util')
+const util = require('./lib/util')
 global.config = config;
 connectMongo()
 let worker = childprocess.fork('./lib/childprocess.js')
