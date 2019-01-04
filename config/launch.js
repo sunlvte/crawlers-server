@@ -21,7 +21,7 @@ const Options_production = {
 		'--no-sandbox', '--disable-setuid-sandbox' // 这个配置是在服务器环境下才配>的
 	]
 }
-const Export_options =
 
-// 邮件模板
+
+
 module.exports = isOnline ? Options_production: Options_dev
