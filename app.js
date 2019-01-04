@@ -11,9 +11,16 @@ const spiders_ticker = require('./lib/spiders_ticker');
 const config = require('./config/start');
 const connectMongo = require('./models/connect')
 const childprocess = require('child_process')
+const log = require('./lib/log')
+const util = require('./util')
 global.config = config;
 connectMongo()
-childprocess.fork('./lib/childprocess.js')
+let worker = childprocess.fork('./lib/childprocess.js')
+worker.on('exit', (i) => {
+	log(`[childprocess error] pid=${i}  时间：${util.DateNow()}`, 'error')
+	worker = childprocess.fork('./lib/childprocess.js')
+	log(`[create new childprocess info] pid=${i}  时间：${util.DateNow()}`, 'info')
+})
 
 
 
