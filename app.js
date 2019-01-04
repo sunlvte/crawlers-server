@@ -15,8 +15,7 @@ const log = require('./lib/log')
 const util = require('./lib/util')
 global.config = config;
 connectMongo()
-const spiders_order = require('./lib/spiders_order');
-const spiders_ticker = require('./lib/spiders_ticker');
+
 
 spiders_order()
 spiders_ticker()
