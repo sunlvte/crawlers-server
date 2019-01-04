@@ -20,7 +20,11 @@ connectMongo()
 spiders_order()
 spiders_ticker()
 
-
+process.on('SIGINT', function () {
+	console.log('Exit now!');
+	global.browser.close();
+	process.exit(1);
+});
 
 
 
