@@ -10,19 +10,10 @@ const spiders_order = require('./lib/spiders_order');
 const spiders_ticker = require('./lib/spiders_ticker');
 const config = require('./config/start');
 const connectMongo = require('./models/connect')
-
+const childprocess = require('child_process')
 global.config = config;
 connectMongo()
-spiders_order()
-spiders_ticker()
-process.on('SIGINT', function () {
-	console.log('Exit now!');
-	global.browser.close();
-	setTimeout(() => {
-
-	process.exit(1);
-	}, 5000)
-});
+childprocess.fork('./lib/childprocess.js')
 
 
 
