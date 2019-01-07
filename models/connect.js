@@ -15,7 +15,7 @@ module.exports = function() {
 	var db = mongoose.connection;
 
 
-    /**
+	/**
      * 连接成功
      */
     mongoose.connection.on('connected', function () {    

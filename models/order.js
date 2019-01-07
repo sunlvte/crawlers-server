@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/order', { useNewUrlParser: true });
+//mongoose.connect('mongodb://localhost:27017/crawlers', { useNewUrlParser: true });
 const modelSchema = new Schema({
 	average: {
 		type: Number,
@@ -18,7 +18,7 @@ const modelSchema = new Schema({
 	}
 })
 
-const model = mongoose.model('order', modelSchema)
+const model = mongoose.model('order', modelSchema, 'order')
 
 
 module.exports = {
